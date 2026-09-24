@@ -5,11 +5,11 @@ import java.net.URL;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class EmantzipazioaEtaEtxebizitza {
 
@@ -21,8 +21,12 @@ public class EmantzipazioaEtaEtxebizitza {
         String kategoria1;
         String kategoria1Balioa;
 
-        public Erroldea(String adierazlea, String aldia, double balioa,
-                        String kategoria1, String kategoria1Balioa) {
+        public Erroldea(
+                String adierazlea,
+                String aldia,
+                double balioa,
+                String kategoria1,
+                String kategoria1Balioa) {
 
             this.adierazlea = adierazlea;
             this.aldia = aldia;
@@ -34,29 +38,38 @@ public class EmantzipazioaEtaEtxebizitza {
 
     public static void main(String[] args) {
 
-        String csvFitxategia = "file:///C:/Users/dosantos.unax/Downloads/iovj-emancipacion.csv";
+        String csvFitxategia =
+                "file:///C:/Users/dosantos.unax/Downloads/iovj-emancipacion.csv";
 
         List<Erroldea> erroldeak = new ArrayList<>();
+
+        // ==========================================
+        // CSV FITXATEGIA IRAKURRI
+        // ==========================================
 
         try {
 
             URI uri = URI.create(csvFitxategia);
             URL url = uri.toURL();
 
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(url.openStream()))) {
+            try (BufferedReader br =
+                    new BufferedReader(
+                            new InputStreamReader(
+                                    url.openStream()))) {
 
                 String lerroa;
                 boolean lehenLerroa = true;
 
                 while ((lerroa = br.readLine()) != null) {
 
+                    // Lehenengo lerroa goiburua da
                     if (lehenLerroa) {
                         lehenLerroa = false;
                         continue;
                     }
 
-                    String[] balioak = lerroa.split(";", -1);
+                    String[] balioak =
+                            lerroa.split(";", -1);
 
                     if (balioak.length >= 5) {
 
@@ -93,7 +106,7 @@ public class EmantzipazioaEtaEtxebizitza {
                             );
 
                         } catch (NumberFormatException e) {
-                            // Zenbaki ez diren lerroak ez ikusi
+                            // Ez bada zenbakia, ez dugu kontuan hartuko
                         }
                     }
                 }
@@ -109,9 +122,15 @@ public class EmantzipazioaEtaEtxebizitza {
             return;
         }
 
-        // Datuak iragazi
-        List<Erroldea> alokairua = new ArrayList<>();
-        List<Erroldea> jabetza = new ArrayList<>();
+        // ==========================================
+        // DATUAK BANATU
+        // ==========================================
+
+        List<Erroldea> alokairua =
+                new ArrayList<>();
+
+        List<Erroldea> jabetza =
+                new ArrayList<>();
 
         for (Erroldea r : erroldeak) {
 
@@ -127,66 +146,229 @@ public class EmantzipazioaEtaEtxebizitza {
             }
         }
 
-        // Alokairurako estatistikak
-        System.out.println(
-                "=== ALOKAIRUKO ETXEBIZITZA LIBRERA SARTZEKO KOSTUA ==="
-        );
+        // ==========================================
+        // MENU NAGUSIA
+        // ==========================================
 
-        kalkulatuEtaErakutsiEstatistikak(alokairua);
+        Scanner scanner = new Scanner(System.in);
 
-        // Jabetzarako estatistikak
-        System.out.println(
-                "\n=== JABETZAKO ETXEBIZITZA LIBRERA SARTZEKO KOSTUA ==="
-        );
+        int aukera = 0;
 
-        kalkulatuEtaErakutsiEstatistikak(jabetza);
+        while (aukera != 4) {
+
+            System.out.println();
+            System.out.println("========================================");
+            System.out.println("       EMANTZIPAZIOA ETA ETXEBIZITZA");
+            System.out.println("========================================");
+            System.out.println();
+            System.out.println("  1. Alokairuko datuak ikusi");
+            System.out.println("  2. Jabetzako datuak ikusi");
+            System.out.println("  3. Datu guztiak ikusi");
+            System.out.println("  4. Irten");
+            System.out.println();
+            System.out.print("Aukeratu aukera bat: ");
+
+            try {
+
+                aukera = scanner.nextInt();
+
+            } catch (Exception e) {
+
+                scanner.nextLine();
+
+                System.out.println();
+                System.out.println(
+                        "Aukera ez da zuzena."
+                );
+
+                continue;
+            }
+
+            System.out.println();
+
+            switch (aukera) {
+
+                case 1:
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    System.out.println(
+                            "       ALOKAIRUKO ETXEBIZITZA"
+                    );
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    kalkulatuEtaErakutsiEstatistikak(
+                            alokairua
+                    );
+
+                    break;
+
+                case 2:
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    System.out.println(
+                            "       JABETZAKO ETXEBIZITZA"
+                    );
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    kalkulatuEtaErakutsiEstatistikak(
+                            jabetza
+                    );
+
+                    break;
+
+                case 3:
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    System.out.println(
+                            "       ALOKAIRUKO ETXEBIZITZA"
+                    );
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    kalkulatuEtaErakutsiEstatistikak(
+                            alokairua
+                    );
+
+                    System.out.println();
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    System.out.println(
+                            "       JABETZAKO ETXEBIZITZA"
+                    );
+
+                    System.out.println(
+                            "========================================"
+                    );
+
+                    kalkulatuEtaErakutsiEstatistikak(
+                            jabetza
+                    );
+
+                    break;
+
+                case 4:
+
+                    System.out.println(
+                            "Programa amaitu da."
+                    );
+
+                    break;
+
+                default:
+
+                    System.out.println(
+                            "Aukera ez da zuzena. "
+                                    + "1 eta 4 arteko zenbaki bat aukeratu."
+                    );
+            }
+
+            if (aukera != 4) {
+
+                System.out.println();
+                System.out.println(
+                        "Sakatu ENTER menu nagusira itzultzeko..."
+                );
+
+                scanner.nextLine();
+                scanner.nextLine();
+            }
+        }
+
+        scanner.close();
     }
+
+    // ==========================================
+    // ESTATISTIKAK KALKULATU ETA ERAKUTSI
+    // ==========================================
 
     private static void kalkulatuEtaErakutsiEstatistikak(
             List<Erroldea> erroldeak) {
 
-        Map<String, Map<String, List<Double>>> datuakUrteLurraldeka =
+        Map<String, Map<String, List<Double>>>
+                datuakUrteLurraldeka =
                 new HashMap<>();
 
         for (Erroldea r : erroldeak) {
 
             if (r.kategoria1Balioa.isEmpty()
                     || r.kategoria1Balioa.equals("Total")) {
+
                 continue;
             }
 
             String urtea = r.aldia;
-            String lurraldea = r.kategoria1Balioa;
+
+            String lurraldea =
+                    r.kategoria1Balioa;
 
             datuakUrteLurraldeka
-                    .computeIfAbsent(urtea, k -> new HashMap<>())
-                    .computeIfAbsent(lurraldea, k -> new ArrayList<>())
+                    .computeIfAbsent(
+                            urtea,
+                            k -> new HashMap<>()
+                    )
+                    .computeIfAbsent(
+                            lurraldea,
+                            k -> new ArrayList<>()
+                    )
                     .add(r.balioa);
         }
 
-        for (Map.Entry<String, Map<String, List<Double>>> urteEntry
-                : datuakUrteLurraldeka.entrySet()) {
+        for (Map.Entry<String, Map<String, List<Double>>>
+                urteEntry :
+                datuakUrteLurraldeka.entrySet()) {
 
-            String urtea = urteEntry.getKey();
+            String urtea =
+                    urteEntry.getKey();
 
-            System.out.println("\nUrtea: " + urtea);
+            System.out.println();
+            System.out.println(
+                    "Urtea: " + urtea
+            );
 
-            for (Map.Entry<String, List<Double>> lurraldeEntry
-                    : urteEntry.getValue().entrySet()) {
+            System.out.println(
+                    "----------------------------------------"
+            );
 
-                String lurraldea = lurraldeEntry.getKey();
+            for (Map.Entry<String, List<Double>>
+                    lurraldeEntry :
+                    urteEntry.getValue().entrySet()) {
+
+                String lurraldea =
+                        lurraldeEntry.getKey();
 
                 List<Double> balioak =
                         lurraldeEntry.getValue();
 
                 double batezbestekoa =
                         balioak.stream()
-                                .mapToDouble(Double::doubleValue)
+                                .mapToDouble(
+                                        Double::doubleValue
+                                )
                                 .average()
                                 .orElse(0.0);
 
                 System.out.printf(
-                        "  %s: %.2f%n",
+                        "  %-20s : %.2f%n",
                         lurraldea,
                         batezbestekoa
                 );
