@@ -39,13 +39,9 @@ public class EmantzipazioaEtaEtxebizitza {
     public static void main(String[] args) {
 
         String csvFitxategia =
-                "file:///C:/Users/dosantos.unax/Downloads/iovj-emancipacion.csv";
+                "https://raw.githubusercontent.com/UnaxDosantos/datu-atzipena2026/main/OpenData/iovj-emancipacion.csv";
 
         List<Erroldea> erroldeak = new ArrayList<>();
-
-        // ==========================================
-        // CSV FITXATEGIA IRAKURRI
-        // ==========================================
 
         try {
 
@@ -122,9 +118,6 @@ public class EmantzipazioaEtaEtxebizitza {
             return;
         }
 
-        // ==========================================
-        // DATUAK BANATU
-        // ==========================================
 
         List<Erroldea> alokairua =
                 new ArrayList<>();
@@ -146,9 +139,6 @@ public class EmantzipazioaEtaEtxebizitza {
             }
         }
 
-        // ==========================================
-        // MENU NAGUSIA
-        // ==========================================
 
         Scanner scanner = new Scanner(System.in);
 
@@ -296,10 +286,6 @@ public class EmantzipazioaEtaEtxebizitza {
 
         scanner.close();
     }
-
-    // ==========================================
-    // ESTATISTIKAK KALKULATU ETA ERAKUTSI
-    // ==========================================
 
     private static void kalkulatuEtaErakutsiEstatistikak(
             List<Erroldea> erroldeak) {
