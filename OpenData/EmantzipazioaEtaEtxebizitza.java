@@ -1,7 +1,11 @@
 package OpenData;
 
-import java.io.FileInputStream;
+import java.net.URI;
+import java.net.URL;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +14,7 @@ import java.util.Map;
 public class EmantzipazioaEtaEtxebizitza {
 
     static class Erroldea {
+
         String adierazlea;
         String aldia;
         double balioa;
@@ -18,6 +23,7 @@ public class EmantzipazioaEtaEtxebizitza {
 
         public Erroldea(String adierazlea, String aldia, double balioa,
                         String kategoria1, String kategoria1Balioa) {
+
             this.adierazlea = adierazlea;
             this.aldia = aldia;
             this.balioa = balioa;
@@ -28,55 +34,67 @@ public class EmantzipazioaEtaEtxebizitza {
 
     public static void main(String[] args) {
 
-        String csvFitxategia = "C:/Users/dosantos.unax/Downloads/iovj-emancipacion.csv";
+        String csvFitxategia = "file:///C:/Users/dosantos.unax/Downloads/iovj-emancipacion.csv";
 
         List<Erroldea> erroldeak = new ArrayList<>();
 
-        try (FileInputStream fis = new FileInputStream(csvFitxategia)) {
+        try {
 
-            String edukia = new String(fis.readAllBytes());
+            URI uri = URI.create(csvFitxategia);
+            URL url = uri.toURL();
 
-            String[] lerroak = edukia.split("\\r?\\n");
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(url.openStream()))) {
 
-            boolean lehenLerroa = true;
+                String lerroa;
+                boolean lehenLerroa = true;
 
-            for (String lerroa : lerroak) {
+                while ((lerroa = br.readLine()) != null) {
 
-                if (lehenLerroa) {
-                    lehenLerroa = false;
-                    continue;
-                }
+                    if (lehenLerroa) {
+                        lehenLerroa = false;
+                        continue;
+                    }
 
-                String[] balioak = lerroa.split(";", -1);
+                    String[] balioak = lerroa.split(";", -1);
 
-                if (balioak.length >= 5) {
+                    if (balioak.length >= 5) {
 
-                    String adierazlea = balioak[0].replace("\"", "");
-                    String aldia = balioak[1].replace("\"", "");
+                        String adierazlea =
+                                balioak[0].replace("\"", "");
 
-                    String balioaStr = balioak[2]
-                            .replace("\"", "")
-                            .replace(",", ".");
+                        String aldia =
+                                balioak[1].replace("\"", "");
 
-                    String kategoria1 = balioak[3].replace("\"", "");
-                    String kategoria1Balioa = balioak[4].replace("\"", "");
+                        String balioaStr =
+                                balioak[2]
+                                        .replace("\"", "")
+                                        .replace(",", ".");
 
-                    try {
+                        String kategoria1 =
+                                balioak[3].replace("\"", "");
 
-                        double balioa = Double.parseDouble(balioaStr);
+                        String kategoria1Balioa =
+                                balioak[4].replace("\"", "");
 
-                        erroldeak.add(
-                            new Erroldea(
-                                adierazlea,
-                                aldia,
-                                balioa,
-                                kategoria1,
-                                kategoria1Balioa
-                            )
-                        );
+                        try {
 
-                    } catch (NumberFormatException e) {
-                        // Zenbaki ez diren lerroak ez ikusi
+                            double balioa =
+                                    Double.parseDouble(balioaStr);
+
+                            erroldeak.add(
+                                    new Erroldea(
+                                            adierazlea,
+                                            aldia,
+                                            balioa,
+                                            kategoria1,
+                                            kategoria1Balioa
+                                    )
+                            );
+
+                        } catch (NumberFormatException e) {
+                            // Zenbaki ez diren lerroak ez ikusi
+                        }
                     }
                 }
             }
@@ -84,7 +102,8 @@ public class EmantzipazioaEtaEtxebizitza {
         } catch (IOException e) {
 
             System.err.println(
-                "Errorea CSV fitxategia irakurtzean: " + e.getMessage()
+                    "Errorea CSV fitxategia irakurtzean: "
+                            + e.getMessage()
             );
 
             return;
@@ -110,14 +129,14 @@ public class EmantzipazioaEtaEtxebizitza {
 
         // Alokairurako estatistikak
         System.out.println(
-            "=== ALOKAIRUKO ETXEBIZITZA LIBRERA SARTZEKO KOSTUA ==="
+                "=== ALOKAIRUKO ETXEBIZITZA LIBRERA SARTZEKO KOSTUA ==="
         );
 
         kalkulatuEtaErakutsiEstatistikak(alokairua);
 
         // Jabetzarako estatistikak
         System.out.println(
-            "\n=== JABETZAKO ETXEBIZITZA LIBRERA SARTZEKO KOSTUA ==="
+                "\n=== JABETZAKO ETXEBIZITZA LIBRERA SARTZEKO KOSTUA ==="
         );
 
         kalkulatuEtaErakutsiEstatistikak(jabetza);
@@ -157,7 +176,8 @@ public class EmantzipazioaEtaEtxebizitza {
 
                 String lurraldea = lurraldeEntry.getKey();
 
-                List<Double> balioak = lurraldeEntry.getValue();
+                List<Double> balioak =
+                        lurraldeEntry.getValue();
 
                 double batezbestekoa =
                         balioak.stream()
@@ -166,9 +186,9 @@ public class EmantzipazioaEtaEtxebizitza {
                                 .orElse(0.0);
 
                 System.out.printf(
-                    "  %s: %.2f%n",
-                    lurraldea,
-                    batezbestekoa
+                        "  %s: %.2f%n",
+                        lurraldea,
+                        batezbestekoa
                 );
             }
         }
