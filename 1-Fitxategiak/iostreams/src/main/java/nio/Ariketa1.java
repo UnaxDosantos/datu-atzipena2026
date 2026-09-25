@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Ariketa1 {
 
     public static void main(String[] args) {
+        System.out.println("Ariketa 1 martxan");
 
         Scanner sc = new Scanner(System.in);
 
