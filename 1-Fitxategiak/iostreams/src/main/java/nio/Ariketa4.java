@@ -57,6 +57,5 @@ public class Ariketa4 {
 
         }
 
-        sc.close();
     }
 }

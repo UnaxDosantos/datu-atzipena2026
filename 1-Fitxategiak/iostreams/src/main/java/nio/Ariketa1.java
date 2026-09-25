@@ -28,7 +28,5 @@ public class Ariketa1 {
         } else {
             System.out.println("Path-a ez da existitzen.");
         }
-
-        sc.close();
     }
 }

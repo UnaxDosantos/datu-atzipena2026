@@ -41,6 +41,5 @@ public class Ariketa2 {
             System.out.println("Errorea: " + e.getMessage());
         }
 
-        sc.close();
     }
 }
