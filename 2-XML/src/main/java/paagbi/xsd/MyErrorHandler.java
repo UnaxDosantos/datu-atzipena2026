@@ -1,4 +1,4 @@
-package com.danibuiza.jaxb.ultimate.xsd;
+package paagbi.xsd;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;

@@ -1,14 +1,14 @@
-package com.danibuiza.jaxb.ultimate.marshal;
+package paagbi.marshal;
 
 import java.io.File;
 import java.time.LocalDate;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 
-import com.danibuiza.jaxb.ultimate.business.Countries;
-import com.danibuiza.jaxb.ultimate.business.Country;
+import paagbi.business.Countries;
+import paagbi.business.Country;
 
 
 

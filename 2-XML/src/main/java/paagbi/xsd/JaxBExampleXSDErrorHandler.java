@@ -1,18 +1,18 @@
-package com.danibuiza.jaxb.ultimate.xsd;
+package paagbi.xsd;
 
 import java.io.File;
 import java.time.LocalDate;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.util.JAXBSource;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.util.JAXBSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
 
-import com.danibuiza.jaxb.ultimate.business.Country;
+import paagbi.business.Country;
 
 /**
  * Example of XSD usage for validation using an error handler, no marshalling involved here

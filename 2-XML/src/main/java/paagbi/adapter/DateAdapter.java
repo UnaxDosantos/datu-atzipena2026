@@ -1,7 +1,7 @@
-package com.danibuiza.jaxb.ultimate.adapter;
+package paagbi.adapter;
 
 import java.time.LocalDate;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
  * This class adapts the LocalDate objects by implementing the XmlAdapter interface in order that

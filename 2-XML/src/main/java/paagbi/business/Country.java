@@ -1,13 +1,13 @@
-package com.danibuiza.jaxb.ultimate.business;
+package paagbi.business;
 
 import java.time.LocalDate;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import com.danibuiza.jaxb.ultimate.adapter.DateAdapter;
+import paagbi.adapter.DateAdapter;
 
 /**
  * Country containing a name, a capital city, a foundation date and the continent it belongs to,

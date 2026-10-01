@@ -1,15 +1,15 @@
-package com.danibuiza.jaxb.ultimate.xsd;
+package paagbi.xsd;
 
 import java.io.File;
 import java.time.LocalDate;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import com.danibuiza.jaxb.ultimate.business.Country;
+import paagbi.business.Country;
 
 /**
  * Example of XSD usage without validation
