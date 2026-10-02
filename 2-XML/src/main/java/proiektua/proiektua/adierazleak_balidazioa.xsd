@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
+
+    <!-- Bertsio zorrotza: kategoria-balioa derrigorrezkoa da eta CSVko balioak soilik onartzen ditu -->
+    <xs:simpleType name="KategoriaBalioaType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Guztira" />
+            <xs:enumeration value="Emakumeak" />
+            <xs:enumeration value="Gizonak" />
+            <xs:enumeration value="Gipuzkoa" />
+            <xs:enumeration value="Bizkaia" />
+            <xs:enumeration value="Araba" />
+            <xs:enumeration value="15-19 urte" />
+            <xs:enumeration value="18-24 urte" />
+            <xs:enumeration value="18-29 urte" />
+            <xs:enumeration value="18-34 urte" />
+            <xs:enumeration value="20-24 urte" />
+            <xs:enumeration value="25-29 urte" />
+            <xs:enumeration value="25-34 urte" />
+            <xs:enumeration value="30-34 urte" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="Adierazlea">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Adierazlea_Izena" type="xs:string" />
+                <xs:element name="Adierazlea_Urtea" type="xs:gYear" />
+                <xs:element name="Adierazlea_Balioa" type="xs:double" />
+                <xs:element name="Adierazlea_Kategoria" type="xs:string" />
+                <xs:element name="Adierazlea_Kategoria_Balioa" type="KategoriaBalioaType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
