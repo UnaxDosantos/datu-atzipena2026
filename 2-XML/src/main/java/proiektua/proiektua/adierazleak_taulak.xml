@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Gazteen emantzipazioa</title>
+    <style type="text/css">
+                    body { font-family: Arial, sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; color: #222; }
+                    h1 { font-size: 1.5em; }
+                    h2 { font-size: 1.05em; margin: 2em 0 0.5em; }
+                    table { border-collapse: collapse; width: 100%; }
+                    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+                    th { background: #f0f0f0; }
+                    td.balioa, th.balioa { text-align: right; }
+                </style>
+  </head>
+  <body>
+    <h1>Gazteen emantzipazioa</h1>
+    <h2>Emantzipazioaren batez besteko adina, sexuaren arabera</h2>
+    <table>
+      <tr>
+        <th>Urtea</th>
+        <th>Kategoria</th>
+        <th>Kategoria-balioa</th>
+        <th class="balioa">Balioa</th>
+      </tr>
+      <tr>
+        <td>2025</td>
+        <td>Sexua</td>
+        <td>Guztira</td>
+        <td class="balioa">30.1</td>
+      </tr>
+      <tr>
+        <td>2025</td>
+        <td>Sexua</td>
+        <td>Emakumeak</td>
+        <td class="balioa">29.4</td>
+      </tr>
+      <tr>
+        <td>2025</td>
+        <td>Sexua</td>
+        <td>Gizonak</td>
+        <td class="balioa">30.8</td>
+      </tr>
+    </table>
+    <h2>Emantzipazioaren benetako adinaren eta adin idealaren arteko aldea, sexuaren arabera</h2>
+    <table>
+      <tr>
+        <th>Urtea</th>
+        <th>Kategoria</th>
+        <th>Kategoria-balioa</th>
+        <th class="balioa">Balioa</th>
+      </tr>
+      <tr>
+        <td>2025</td>
+        <td>Sexua</td>
+        <td>Guztira</td>
+        <td class="balioa">5.2</td>
+      </tr>
+    </table>
+    <h2>Alokairuko etxebizitza librera iristeko kostua, sexuaren, adin-taldeen eta lurralde historikoen arabera</h2>
+    <table>
+      <tr>
+        <th>Urtea</th>
+        <th>Kategoria</th>
+        <th>Kategoria-balioa</th>
+        <th class="balioa">Balioa</th>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>Sexua, adin-taldeak eta lurralde historikoak</td>
+        <td>Gipuzkoa</td>
+        <td class="balioa">54.9</td>
+      </tr>
+    </table>
+    <h2>Jabetzako etxebizitza librera iristeko kostua, sexuaren, adin-taldeen eta lurralde historikoen arabera</h2>
+    <table>
+      <tr>
+        <th>Urtea</th>
+        <th>Kategoria</th>
+        <th>Kategoria-balioa</th>
+        <th class="balioa">Balioa</th>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>Sexua, adin-taldeak eta lurralde historikoak</td>
+        <td>18-24 urte</td>
+        <td class="balioa">85.0</td>
+      </tr>
+    </table>
+    <h2>Etxebizitza bat eskuratzeko beharra duten gazteak, sexuaren eta adin-taldeen arabera</h2>
+    <table>
+      <tr>
+        <th>Urtea</th>
+        <th>Kategoria</th>
+        <th>Kategoria-balioa</th>
+        <th class="balioa">Balioa</th>
+      </tr>
+      <tr>
+        <td>2023</td>
+        <td>Sexua eta adina 18-34</td>
+        <td>Guztira</td>
+        <td class="balioa">58289.0</td>
+      </tr>
+    </table>
+    <h2>Etxebizitzaren garestitasunaren pertzepzioa emantzipaziorako zailtasun gisa, sexuaren, adin-taldeen eta lurralde historikoen arabera</h2>
+    <table>
+      <tr>
+        <th>Urtea</th>
+        <th>Kategoria</th>
+        <th>Kategoria-balioa</th>
+        <th class="balioa">Balioa</th>
+      </tr>
+      <tr>
+        <td>2026</td>
+        <td>Sexua, 2 adin-talde, LLHH</td>
+        <td>Guztira</td>
+        <td class="balioa">85.5</td>
+      </tr>
+    </table>
+  </body>
+</html>

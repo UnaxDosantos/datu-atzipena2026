@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
 
-    <!-- Bertsio zorrotza: kategoria-balioa derrigorrezkoa da eta CSVko balioak soilik onartzen ditu -->
+    <!--
+        Bertsio zorrotza (JaxBExampleXSDErrorHandler eta JaxBExampleXSDValidation klaseek erabiltzen dute):
+        kategoria-balioa derrigorrezkoa da eta CSVko balioak soilik onartzen ditu.
+        Hemen definitzen da onartutako balioen zerrenda (enumerazioa): sexua, lurralde historikoak eta adin-taldeak.
+    -->
     <xs:simpleType name="KategoriaBalioaType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Guztira" />
@@ -21,6 +25,11 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <!--
+        Adierazlea: eremu guztiak derrigorrezkoak dira (minOccurs ez da jarri, beraz lehenetsia 1 da).
+        Kategoria-balioa falta bada, edo zerrendan ez dagoen balio bat badu (adibidez "Nafarroa"),
+        balidazioak huts egingo du.
+    -->
     <xs:element name="Adierazlea">
         <xs:complexType>
             <xs:sequence>

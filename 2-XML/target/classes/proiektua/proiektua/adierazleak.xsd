@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
 
-    <!-- Gazteen emantzipazioaren adierazlea (iovj-emancipacion.csv) -->
+    <!--
+        Eskema malgua (JaxBExampleXSD klaseak erabiltzen du).
+        Adierazle baten mota: elementuek ordena hau bete behar dute (xs:sequence), eta
+        Java klasearen propOrder-ekin bat datoz. Kategoria eta kategoria-balioa aukerakoak dira.
+    -->
     <xs:complexType name="AdierazleaType">
         <xs:sequence>
+            <!-- Adierazlearen izena (testua) -->
             <xs:element name="Adierazlea_Izena" type="xs:string" />
+            <!-- Urtea: xs:gYear motak 2024 bezalako formatua onartzen du (UrteaAdapter-ak sortzen duena) -->
             <xs:element name="Adierazlea_Urtea" type="xs:gYear" />
+            <!-- Balioa: zenbaki hamartarra -->
             <xs:element name="Adierazlea_Balioa" type="xs:double" />
+            <!-- Kategoria eta bere balioa: aukerakoak (minOccurs="0") -->
             <xs:element name="Adierazlea_Kategoria" type="xs:string" minOccurs="0" />
             <xs:element name="Adierazlea_Kategoria_Balioa" type="xs:string" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 
+    <!-- Adierazle bakarra: erro-elementu gisa erabil daiteke (marshal sinplea) -->
     <xs:element name="Adierazlea" type="AdierazleaType" />
 
+    <!-- Adierazleen zerrenda: <Adierazleak> erroa, barruan 0 adierazle edo gehiago -->
     <xs:element name="Adierazleak">
         <xs:complexType>
             <xs:sequence>

@@ -10,7 +10,7 @@ import jakarta.xml.bind.Marshaller;
 import proiektua.proiektua.business.Adierazlea;
 
 /**
- * JaxB-ren marshal funtzionalitateen adibide sinplea
+ * JaxB-ren marshal funtzionalitateen adibide sinplea: adierazle bakar bat XML bihurtzen du
  * 
  * @author dgutierrez-diez
  */
@@ -31,6 +31,7 @@ public class JaxBExampleSimple
             batezBestekoAdina.setKategoriaBalioa( "Guztira" );
 
             /* jaxb marshaller-a hasieratu */
+            // testuingurua sortzen da Adierazlea klasearentzat
             JAXBContext jaxbContext = JAXBContext.newInstance( Adierazlea.class );
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
@@ -43,6 +44,7 @@ public class JaxBExampleSimple
         }
         catch( JAXBException e )
         {
+            // JaxB-ren edozein errore hemen harrapatzen da eta pilaren traza inprimatzen da
             e.printStackTrace();
         }
 

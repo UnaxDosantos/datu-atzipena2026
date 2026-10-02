@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="adierazleak.xsl"?>
+<!--
+    Gazteen emantzipazioaren adierazleak (iovj-emancipacion.csv fitxategiko datuak).
+    - Erroa: <Adierazleak>, eta barruan <Adierazlea> elementu bat adierazle bakoitzeko.
+    - Adierazle bakoitzak: izena, urtea, balioa, kategoria eta kategoria-balioa.
+    - Fitxategi hau UnMarshalJAXVBCompleteExample klaseak irakurtzen du, eta
+      adierazleak.xsl hoja-estiloak taula bihurtzen du.
+-->
 <Adierazleak>
+    <!-- Emantzipazioaren batez besteko adina (guztira) -->
     <Adierazlea>
         <Adierazlea_Izena>Emantzipazioaren batez besteko adina, sexuaren arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2025</Adierazlea_Urtea>
@@ -7,6 +16,7 @@
         <Adierazlea_Kategoria>Sexua</Adierazlea_Kategoria>
         <Adierazlea_Kategoria_Balioa>Guztira</Adierazlea_Kategoria_Balioa>
     </Adierazlea>
+    <!-- Emantzipazioaren batez besteko adina (emakumeak) -->
     <Adierazlea>
         <Adierazlea_Izena>Emantzipazioaren batez besteko adina, sexuaren arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2025</Adierazlea_Urtea>
@@ -14,6 +24,7 @@
         <Adierazlea_Kategoria>Sexua</Adierazlea_Kategoria>
         <Adierazlea_Kategoria_Balioa>Emakumeak</Adierazlea_Kategoria_Balioa>
     </Adierazlea>
+    <!-- Emantzipazioaren batez besteko adina (gizonak) -->
     <Adierazlea>
         <Adierazlea_Izena>Emantzipazioaren batez besteko adina, sexuaren arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2025</Adierazlea_Urtea>
@@ -21,6 +32,7 @@
         <Adierazlea_Kategoria>Sexua</Adierazlea_Kategoria>
         <Adierazlea_Kategoria_Balioa>Gizonak</Adierazlea_Kategoria_Balioa>
     </Adierazlea>
+    <!-- Benetako adinaren eta adin idealaren arteko aldea -->
     <Adierazlea>
         <Adierazlea_Izena>Emantzipazioaren benetako adinaren eta adin idealaren arteko aldea, sexuaren arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2025</Adierazlea_Urtea>
@@ -28,6 +40,7 @@
         <Adierazlea_Kategoria>Sexua</Adierazlea_Kategoria>
         <Adierazlea_Kategoria_Balioa>Guztira</Adierazlea_Kategoria_Balioa>
     </Adierazlea>
+    <!-- Alokairuaren kostua (Gipuzkoa) -->
     <Adierazlea>
         <Adierazlea_Izena>Alokairuko etxebizitza librera iristeko kostua, sexuaren, adin-taldeen eta lurralde historikoen arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2024</Adierazlea_Urtea>
@@ -35,6 +48,7 @@
         <Adierazlea_Kategoria>Sexua, adin-taldeak eta lurralde historikoak</Adierazlea_Kategoria>
         <Adierazlea_Kategoria_Balioa>Gipuzkoa</Adierazlea_Kategoria_Balioa>
     </Adierazlea>
+    <!-- Jabetzaren kostua (18-24 urte) -->
     <Adierazlea>
         <Adierazlea_Izena>Jabetzako etxebizitza librera iristeko kostua, sexuaren, adin-taldeen eta lurralde historikoen arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2024</Adierazlea_Urtea>
@@ -42,6 +56,7 @@
         <Adierazlea_Kategoria>Sexua, adin-taldeak eta lurralde historikoak</Adierazlea_Kategoria>
         <Adierazlea_Kategoria_Balioa>18-24 urte</Adierazlea_Kategoria_Balioa>
     </Adierazlea>
+    <!-- Etxebizitza behar duten gazteak -->
     <Adierazlea>
         <Adierazlea_Izena>Etxebizitza bat eskuratzeko beharra duten gazteak, sexuaren eta adin-taldeen arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2023</Adierazlea_Urtea>
@@ -49,6 +64,7 @@
         <Adierazlea_Kategoria>Sexua eta adina 18-34</Adierazlea_Kategoria>
         <Adierazlea_Kategoria_Balioa>Guztira</Adierazlea_Kategoria_Balioa>
     </Adierazlea>
+    <!-- Etxebizitzaren garestitasunaren pertzepzioa -->
     <Adierazlea>
         <Adierazlea_Izena>Etxebizitzaren garestitasunaren pertzepzioa emantzipaziorako zailtasun gisa, sexuaren, adin-taldeen eta lurralde historikoen arabera</Adierazlea_Izena>
         <Adierazlea_Urtea>2026</Adierazlea_Urtea>

@@ -15,7 +15,8 @@ import org.xml.sax.SAXException;
 import proiektua.proiektua.business.Adierazlea;
 
 /**
- * XSD erabileraren adibidea baliozkotzeko errore-kudeatzaile batekin, hemen ez dago marshal-ik
+ * XSD erabileraren adibidea baliozkotzeko errore-kudeatzaile batekin, hemen ez dago marshal-ik:
+ * objektuak zuzenean balidatzen dira JAXBSource baten bidez
  * 
  * @author dgutierrez-diez
  */
@@ -44,7 +45,7 @@ public class JaxBExampleXSDErrorHandler
         zuzena.setKategoriaBalioa( "Guztira" );
 
         /**
-         * eskema sortzen da
+         * eskema sortzen da (bertsio zorrotza, kategoria-balioa derrigorrezkoa duena)
          */
         SchemaFactory sf = SchemaFactory.newInstance( XMLConstants.W3C_XML_SCHEMA_NS_URI );
         Schema schema = sf.newSchema( new File( "adierazleak_balidazioa.xsd" ) );
@@ -60,9 +61,11 @@ public class JaxBExampleXSDErrorHandler
          * balidatzailea hasieratzen da
          */
         Validator validator = schema.newValidator();
+        // MyErrorHandler-ek abisu eta errore guztiak salbuespen bihurtzen ditu
         validator.setErrorHandler( new MyErrorHandler() );
 
         // balidatzailea erabiltzen da
+        // lehenengoa: huts egin behar du
         try
         {
             validator.validate( sourceKategoriaBalioarikGabe );
@@ -73,6 +76,7 @@ public class JaxBExampleXSDErrorHandler
             ex.printStackTrace();
             System.out.println( "kategoria-balioarik gabeko adierazleak arazoak ditu" );
         }
+        // bigarrena: ondo pasa behar du
         try
         {
             validator.validate( sourceZuzena );

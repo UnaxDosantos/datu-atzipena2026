@@ -13,7 +13,8 @@ import javax.xml.validation.SchemaFactory;
 import proiektua.proiektua.business.Adierazlea;
 
 /**
- * XSD-en erabileraren adibidea marshal egitean, inplikatutako objektuak baliozkotuz
+ * XSD-en erabileraren adibidea marshal egitean, inplikatutako objektuak baliozkotuz. Hiru kasu
+ * probatzen dira: eremu bat falta da, balio okerra, eta adierazle zuzena
  * 
  * @author dgutierrez-diez
  *
@@ -32,6 +33,7 @@ public class JaxBExampleXSDValidation
         kategoriaBalioarikGabe.setBalioa( 30.1 );
         kategoriaBalioarikGabe.setKategoria( "Sexua" );
 
+        // eskema kargatzen da (bertsio zorrotza)
         SchemaFactory sf = SchemaFactory.newInstance( XMLConstants.W3C_XML_SCHEMA_NS_URI );
         Schema schema = sf.newSchema( new File( "adierazleak_balidazioa.xsd" ) );
 
@@ -42,6 +44,7 @@ public class JaxBExampleXSDValidation
         marshaller.setSchema( schema );
         // eskemak validation handler bat erabiltzen du objektuak baliozkotzeko
         marshaller.setEventHandler( new MyValidationEventHandler() );
+        // lehenengo kasua: eremu bat falta da
         try
         {
             marshaller.marshal( kategoriaBalioarikGabe, System.out );
@@ -61,6 +64,7 @@ public class JaxBExampleXSDValidation
         kategoriaOkerra.setKategoria( "Sexua" );
         kategoriaOkerra.setKategoriaBalioa( "Nafarroa" );
 
+        // bigarren kasua: balioa ez dago enumerazioan
         try
         {
             marshaller.marshal( kategoriaOkerra, System.out );
@@ -80,6 +84,7 @@ public class JaxBExampleXSDValidation
         zuzena.setKategoria( "Sexua" );
         zuzena.setKategoriaBalioa( "Guztira" );
 
+        // hirugarren kasua: adierazle zuzena, XMLa kontsolan idatziko da
         try
         {
             marshaller.marshal( zuzena, System.out );

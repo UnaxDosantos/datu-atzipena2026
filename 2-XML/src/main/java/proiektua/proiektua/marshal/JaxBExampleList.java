@@ -11,7 +11,8 @@ import proiektua.proiektua.business.Adierazlea;
 import proiektua.proiektua.business.Adierazleak;
 
 /**
- * JaxB-ren marshal funtzionalitateen adibide sinplea, zerrendak nola kudeatu erakusten duena
+ * JaxB-ren marshal funtzionalitateen adibide sinplea, zerrendak nola kudeatu erakusten duena.
+ * Adierazle bat baino gehiago Adierazleak edukiontzian sartu eta XML bakar batean idazten dira.
  * 
  * @author dgutierrez-diez
  */
@@ -24,6 +25,7 @@ public class JaxBExampleList
         {
 
             /* marshal egiteko adierazle pare bat dituen zerrenda sortu */
+            // lehenengo adierazlea: emakumeen batez besteko adina
             Adierazlea emakumeak = new Adierazlea();
             emakumeak.setIzena( "Emantzipazioaren batez besteko adina, sexuaren arabera" );
             emakumeak.setUrtea( Year.of( 2025 ) );
@@ -31,6 +33,7 @@ public class JaxBExampleList
             emakumeak.setKategoria( "Sexua" );
             emakumeak.setKategoriaBalioa( "Emakumeak" );
 
+            // bigarren adierazlea: gizonen batez besteko adina
             Adierazlea gizonak = new Adierazlea();
             gizonak.setIzena( "Emantzipazioaren batez besteko adina, sexuaren arabera" );
             gizonak.setUrtea( Year.of( 2025 ) );
@@ -38,11 +41,13 @@ public class JaxBExampleList
             gizonak.setKategoria( "Sexua" );
             gizonak.setKategoriaBalioa( "Gizonak" );
 
+            // bi adierazleak edukiontzian gehitzen dira
             Adierazleak adierazleak = new Adierazleak();
             adierazleak.add( emakumeak );
             adierazleak.add( gizonak );
 
             /* jaxb marshaller-a hasieratu */
+            // oraingoan testuingurua Adierazleak klasearentzat sortzen da (erroa)
             JAXBContext jaxbContext = JAXBContext.newInstance( Adierazleak.class );
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
@@ -56,6 +61,7 @@ public class JaxBExampleList
         }
         catch( JAXBException e )
         {
+            // JaxB-ren edozein errore hemen harrapatzen da eta pilaren traza inprimatzen da
             e.printStackTrace();
         }
 

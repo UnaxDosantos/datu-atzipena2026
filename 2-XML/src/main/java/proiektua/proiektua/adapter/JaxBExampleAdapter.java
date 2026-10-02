@@ -11,7 +11,8 @@ import proiektua.proiektua.business.Adierazlea;
 
 /**
  * JaxB-ren marshal funtzionalitateen adibide sinplea klase konplexuak erabiltzean, kasu honetan
- * java.time.Year
+ * java.time.Year. Adierazleak urtea Year motakoa du, eta UrteaAdapter-ari esker JaxB gai da
+ * hori XML bihurtzeko.
  * 
  * @author dgutierrez-diez
  */
@@ -23,16 +24,18 @@ public class JaxBExampleAdapter
         try
         {
 
-            /* marshal egiteko datu oso sinpleak */
+            /* marshal egiteko datu oso sinpleak: adierazle bat CSVko lerro batetik hartuta */
             Adierazlea adierazlea = new Adierazlea();
             adierazlea.setIzena( "Alokairuko etxebizitza librera iristeko kostua, sexuaren, adin-taldeen eta lurralde historikoen arabera" );
             adierazlea.setKategoria( "Sexua, adin-taldeak eta lurralde historikoak" );
             adierazlea.setKategoriaBalioa( "Gipuzkoa" );
             adierazlea.setBalioa( 54.9 );
 
+            // Year motako atributua: UrteaAdapter-ak testu bihurtuko du XMLrako
             adierazlea.setUrtea( Year.of( 2024 ) );
 
             /* jaxb marshaller-a hasieratu */
+            // testuingurua sortzen da Adierazlea klasearentzat
             JAXBContext jaxbContext = JAXBContext.newInstance( Adierazlea.class );
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
@@ -46,6 +49,7 @@ public class JaxBExampleAdapter
         }
         catch( JAXBException e )
         {
+            // JaxB-ren edozein errore hemen harrapatzen da eta pilaren traza inprimatzen da
             e.printStackTrace();
         }
 

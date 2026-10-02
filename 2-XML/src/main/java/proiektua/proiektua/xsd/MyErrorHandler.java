@@ -5,13 +5,19 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 /**
- * {@link ErrorHandler} interfazearen inplementazioa
+ * {@link ErrorHandler} interfazearen inplementazioa. Balidatzaileak aurkitzen duen arazo
+ * mota bakoitza (abisua, errorea, errore larria) salbuespen bihurtzen du, horrela balidazioa
+ * berehala geldituko da lehenengo arazoa aurkitzean.
+ * 
  * @author dgutierrez-diez
  *
  */
 public class MyErrorHandler implements ErrorHandler
 {
 
+    /**
+     * Abisu bat aurkitzen denean deitzen da; salbuespena jaurtitzen du
+     */
     @Override
     public void warning( SAXParseException exception ) throws SAXException
     {
@@ -19,6 +25,10 @@ public class MyErrorHandler implements ErrorHandler
 
     }
 
+    /**
+     * Errore bat aurkitzen denean deitzen da (adibidez, eskemaren aurkako datu bat); salbuespena
+     * jaurtitzen du
+     */
     @Override
     public void error( SAXParseException exception ) throws SAXException
     {
@@ -26,6 +36,10 @@ public class MyErrorHandler implements ErrorHandler
 
     }
 
+    /**
+     * Errore larri bat aurkitzen denean deitzen da (adibidez, XMLa ongi osatua ez dagoenean);
+     * salbuespena jaurtitzen du
+     */
     @Override
     public void fatalError( SAXParseException exception ) throws SAXException
     {

@@ -8,22 +8,28 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
  * JaxB ez da gai zerrendak zuzenean erro-elementu gisa marshal egiteko, beraz adierazleen
- * zerrendarentzat edukiontzi bat behar da. Getter eta Setter-ak jaxb-k erabiltzen ditu
+ * zerrendarentzat edukiontzi bat behar da. Getter eta Setter-ak jaxb-k erabiltzen ditu.
+ * 
+ * XMLan honela agertzen da: {@code <Adierazleak>} erroa, eta barruan {@code <Adierazlea>} elementu asko.
  * 
  * @author dgutierrez-diez
  */
+// XMLko erro-elementuaren izena: <Adierazleak>
 @XmlRootElement( name = "Adierazleak" )
 public class Adierazleak
 {
+    /** XMLan idatziko den adierazleen zerrenda */
     List<Adierazlea> adierazleak;
 
+    /** @return adierazleen zerrenda */
     public List<Adierazlea> getAdierazleak()
     {
         return adierazleak;
     }
 
     /**
-     * xml-an marshal egingo den elementua
+     * xml-an marshal egingo den elementua: zerrendako elementu bakoitza {@code <Adierazlea>} bezala
+     * idatziko da
      */
     @XmlElement( name = "Adierazlea" )
     public void setAdierazleak( List<Adierazlea> adierazleak )
@@ -36,10 +42,11 @@ public class Adierazleak
      * sortuko balitz, metodo hau sortutako klasean edo laguntza-klaseren batean gehitu beharko
      * litzateke
      * 
-     * @param adierazlea
+     * @param adierazlea zerrendara gehituko den adierazlea
      */
     public void add( Adierazlea adierazlea )
     {
+        // zerrenda oraindik sortu gabe badago, orain sortzen da
         if( this.adierazleak == null )
         {
             this.adierazleak = new ArrayList<Adierazlea>();
@@ -48,6 +55,10 @@ public class Adierazleak
 
     }
 
+    /**
+     * Zerrendako adierazle guztiak testu bakar batean batzen ditu, bakoitzaren ondoren lerro
+     * huts bat utziz
+     */
     @Override
     public String toString()
     {
