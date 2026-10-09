@@ -1,34 +1,34 @@
 
 package paagbi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.io.File;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
 
 public class jsonFitxategiBatenIdatzi {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        try {
-            ObjectMapper mapper = new ObjectMapper();
+        JsonObject model = Json.createObjectBuilder()
+                .add("menu", Json.createObjectBuilder()
+                        .add("id", "file")
+                        .add("value", "File"))
+                .build();
 
-            ObjectNode menu = mapper.createObjectNode();
-            menu.put("id", "file");
-            menu.put("value", "File");
+        Path karpeta = Path.of("data");
+        Files.createDirectories(karpeta);
 
-            ObjectNode root = mapper.createObjectNode();
-            root.set("menu", menu);
-
-            File carpeta = new File("data");
-            carpeta.mkdirs();
-
-            mapper.writerWithDefaultPrettyPrinter()
-                    .writeValue(new File(carpeta, "Irteera.json"), root);
-
-            System.out.println("Fitxategia behar bezala gorde da.");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        try (JsonWriter writer = Json.createWriterFactory(
+                Map.of("jakarta.json.stream.JsonGenerator.prettyPrinting", true)
+        ).createWriter(new FileOutputStream("data/Irteera.json"))) {
+            writer.writeObject(model);
         }
+
+        System.out.println("JSON fitxategia sortu da: data/Irteera.json");
     }
 }

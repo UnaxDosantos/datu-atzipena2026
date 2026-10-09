@@ -1,54 +1,55 @@
 
 package paagbi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonWriter;
+import java.util.Map;
 
 public class jsonZuhaitzaSortuBi {
 
     public static void main(String[] args) {
 
-        ObjectMapper mapper = new ObjectMapper();
+        JsonObject berria = Json.createObjectBuilder()
+                .add("value", "New")
+                .add("onclick", "CreateNewDoc()")
+                .build();
 
-        ObjectNode root = mapper.createObjectNode();
-        ObjectNode menu = mapper.createObjectNode();
-        ObjectNode popup = mapper.createObjectNode();
+        JsonObject ireki = Json.createObjectBuilder()
+                .add("value", "Open")
+                .add("onclick", "OpenDoc()")
+                .build();
 
-        ArrayNode menuitem = mapper.createArrayNode();
+        JsonObject itxi = Json.createObjectBuilder()
+                .add("value", "Close")
+                .add("onclick", "CloseDoc()")
+                .build();
 
-        ObjectNode berria = mapper.createObjectNode();
-        berria.put("value", "New");
-        berria.put("onclick", "CreateNewDoc()");
-        menuitem.add(berria);
+        JsonArray menuitem = Json.createArrayBuilder()
+                .add(berria)
+                .add(ireki)
+                .add(itxi)
+                .build();
 
-        ObjectNode ireki = mapper.createObjectNode();
-        ireki.put("value", "Open");
-        ireki.put("onclick", "OpenDoc()");
-        menuitem.add(ireki);
+        JsonObject popup = Json.createObjectBuilder()
+                .add("menuitem", menuitem)
+                .build();
 
-        ObjectNode itxi = mapper.createObjectNode();
-        itxi.put("value", "Close");
-        itxi.put("onclick", "CloseDoc()");
-        menuitem.add(itxi);
+        JsonObject menu = Json.createObjectBuilder()
+                .add("id", "file")
+                .add("value", "File")
+                .add("popup", popup)
+                .build();
 
-        popup.set("menuitem", menuitem);
+        JsonObject model = Json.createObjectBuilder()
+                .add("menu", menu)
+                .build();
 
-        menu.put("id", "file");
-        menu.put("value", "File");
-        menu.set("popup", popup);
-
-        root.set("menu", menu);
-
-        System.out.println(root.toPrettyString());
-
-        System.out.println(
-                root.get("menu")
-                    .get("popup")
-                    .get("menuitem")
-                    .get(0)
-                    .get("value")
-                    .asText()
-        );
+        try (JsonWriter writer = Json.createWriterFactory(
+                Map.of("jakarta.json.stream.JsonGenerator.prettyPrinting", true)
+        ).createWriter(System.out)) {
+            writer.writeObject(model);
+        }
     }
 }

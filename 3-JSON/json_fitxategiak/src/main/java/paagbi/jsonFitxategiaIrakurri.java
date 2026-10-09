@@ -1,27 +1,24 @@
 
 package paagbi;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class jsonFitxategiaIrakurri {
 
     public static void main(String[] args) {
 
-        try {
-            ObjectMapper mapper = new ObjectMapper();
+        try (InputStream is = new FileInputStream("json_fitxategiak/menu.json");
+             JsonReader reader = Json.createReader(is)) {
 
-            JsonNode root = mapper.readTree(
-                    new File("json_fitxategiak/src/main/java/paagbi/menu.json")
-            );
+            JsonObject model = reader.readObject();
 
-            System.out.println(root.toPrettyString());
-
-            JsonNode menu = root.get("menu");
-
-            System.out.println(menu.get("id").asText());
-            System.out.println(menu.get("value").asText());
+            System.out.println(model);
+            System.out.println(model.getJsonObject("menu").getString("id"));
+            System.out.println(model.getJsonObject("menu").getString("value"));
 
         } catch (Exception e) {
             e.printStackTrace();

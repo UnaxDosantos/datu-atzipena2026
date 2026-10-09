@@ -1,22 +1,27 @@
 
 package paagbi;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonWriter;
 
 public class jsonZuhaitzaSortu {
 
     public static void main(String[] args) {
 
-        ObjectMapper mapper = new ObjectMapper();
+        JsonObject menu = Json.createObjectBuilder()
+                .add("id", "file")
+                .add("value", "File")
+                .build();
 
-        ObjectNode menu = mapper.createObjectNode();
-        menu.put("id", "file");
-        menu.put("value", "File");
+        JsonObject model = Json.createObjectBuilder()
+                .add("menu", menu)
+                .build();
 
-        ObjectNode root = mapper.createObjectNode();
-        root.set("menu", menu);
-
-        System.out.println(root.toPrettyString());
+        try (JsonWriter writer = Json.createWriterFactory(
+                java.util.Map.of("jakarta.json.stream.JsonGenerator.prettyPrinting", true)
+        ).createWriter(System.out)) {
+            writer.writeObject(model);
+        }
     }
 }
