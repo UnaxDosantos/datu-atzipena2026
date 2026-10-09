@@ -13,7 +13,7 @@ public class jsonFitxategiaIrakurri {
             ObjectMapper mapper = new ObjectMapper();
 
             JsonNode root = mapper.readTree(
-                    new File("json_fitxategiak/menu.json")
+                    new File("json_fitxategiak/src/main/java/paagbi/menu.json")
             );
 
             System.out.println(root.toPrettyString());
